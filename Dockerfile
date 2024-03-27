@@ -9,7 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . . 
 
-expose 8080/tcp
+expose 9003/tcp
 
 CMD ["streamlit", "run", "app.py"]
 
