@@ -17,13 +17,14 @@ jobs:
     
       
     - name: Log into Docker Hub
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login  --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      run: echo ${{ secrets.DOCKER_TOKEN }} | docker login  --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
       
     - name: Build the Docker image
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/quotedaily-streamlit-cicd-pipeline:v1 .
       
     - name: Log into Docker Hub
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login jpacerqueira83.docker.com --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      run: echo ${{ secrets.DOCKER_TOKEN }} | docker login jpacerqueira83.docker.com --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
       
     - name : Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/quotedaily-streamlit-cicd-pipeline:v1
+      
