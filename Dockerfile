@@ -8,5 +8,5 @@ RUN pip install --no-catch-dir -r requirements.txt
 
 COPY . . 
 
-CMD["streamlit", "run", "app.py"]
+CMD ["streamlit", "run", "app.py"]
 
