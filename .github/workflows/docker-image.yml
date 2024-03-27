@@ -15,11 +15,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+      
+    - name: Log into Docker Hub
+      run: docker login jpacerqueira83.docker.com -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD }}
+      
     - name: Build the Docker image
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/quotedaily-streamlit-cicd-pipeline:v1 .
       
     - name: Log into Docker Hub
-      run: docker login -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD }}
+      run: docker login jpacerqueira83.docker.com -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD }}
       
     - name : Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/quotedaily-streamlit-cicd-pipeline:v1
